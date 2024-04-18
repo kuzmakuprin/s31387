@@ -1,15 +1,30 @@
-import java.util.Scanner;
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
-     Scanner a = new Scanner(System.in);
-     int b = a.nextInt();
+        ArrayList<Employee> employees =new ArrayList<>();
+        // Creating and adding developers
+        Developer dev =new Developer("John","Doe","NewYork","john@doe.com","123456789",2020);
+        Technology t=new Technology("Java",800);
+        dev.addTechnology(t);
+        //employees.add(dev);
 
-     if(b>0){
-         System.out.println("Dodatnia");
-     } else if (b<0){
-         System.out.println("Ujemna");
-     }else{
-         System.out.println("Zero");
-     }
+        // Creating and adding testers
+        Tester tester = new Tester("Jane","Smith","LosAngeles","jane@smith.com","987654321",2021);
+        tester.addTestType("UI/UX");
+        //employees.add(tester);
+
+        // Creating and adding a manager
+        Manager manager =new Manager("Bob","Johnson","Chicago","bob@johnson.com","1122334455",2019);
+        Goal g=new Goal(2010,10,15,"Implementing FB login",1000);
+       // manager.addGoals(g);
+        //.add(manager);
+
+        int totalAmount =0;
+        for(Employee employee : employees)
+        {
+            totalAmount += employee.calculateSalary();
+        }
+        System.out.println("Total amount to be paid this month:"+ totalAmount +" USD");
     }
 }
